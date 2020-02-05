@@ -12,7 +12,7 @@ def root():
     global code
     if request.method == 'POST':
         code = request.form['code']
-    return code
+    return code+UPLOAD_LINK
 
 @app.route('/upload', methods=['GET'])
 def upload():
@@ -26,7 +26,16 @@ UPLOAD_PAGE = f"""
     </form>
 </html>
 """
-print(f"""URL = {os.environ['URL']}/""")
+
+UPLOAD_LINK = f"""
+<hr>
+<h1>Upload new code at
+<a href="{os.environ['URL']}/upload">{os.environ['URL']}/upload</a>
+</h1>
+"""
+code = ''
+
+print(f"URL = {os.environ['URL']}/")
 
 if __name__ == "__main__":
     app.run(debug = False,host="0.0.0.0", port=5000)
