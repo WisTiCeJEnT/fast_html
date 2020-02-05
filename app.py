@@ -12,7 +12,7 @@ def root():
     global code
     if request.method == 'POST':
         code = request.form['code']
-    return code+UPLOAD_LINK
+    return code # + UPLOAD_LINK     #Hide Upload link
 
 @app.route('/upload', methods=['GET'])
 def upload():
