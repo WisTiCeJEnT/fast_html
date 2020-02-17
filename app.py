@@ -1,5 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from fast_html import *
+import json
 
 app = Flask(__name__)
 
@@ -17,6 +18,10 @@ def root():
 @app.route('/upload', methods=['GET'])
 def upload():
     return UPLOAD_PAGE
+
+@app.route('/code', methods=['GET'])
+def code():
+    return jsonify({"code": code})
 
 code = ''
 
